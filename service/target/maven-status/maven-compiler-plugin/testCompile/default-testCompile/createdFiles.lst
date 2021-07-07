@@ -1,0 +1,10 @@
+za\gov\sars\sms\service\AssessmentHelper.class
+za\gov\sars\sms\service\StudentHelper.class
+za\gov\sars\sms\service\SubjectHelper.class
+za\gov\sars\sms\service\SystemUserHelper.class
+za\gov\sars\sms\service\SchoolHelper.class
+za\gov\sars\sms\service\GradeHelper.class
+za\gov\sars\sms\service\AttendenceHelper.class
+za\gov\sars\sms\service\FacilityHelper.class
+za\gov\sars\sms\service\EmployeeHelper.class
+za\gov\sars\sms\service\ServiceLayerTestCase.class

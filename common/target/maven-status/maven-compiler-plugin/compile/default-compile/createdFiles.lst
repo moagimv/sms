@@ -1,0 +1,10 @@
+za\gov\sars\sms\common\AttendanceStatus.class
+za\gov\sars\sms\common\DataSourceConfiguration.class
+za\gov\sars\sms\common\DatasourceUtility.class
+za\gov\sars\sms\common\TestDataSourceConfiguration.class
+za\gov\sars\sms\common\PersonType.class
+za\gov\sars\sms\common\Gender.class
+za\gov\sars\sms\common\AddressType.class
+za\gov\sars\sms\common\SystemUserType.class
+za\gov\sars\sms\common\EmployeeType.class
+za\gov\sars\sms\common\SystemUserStatus.class

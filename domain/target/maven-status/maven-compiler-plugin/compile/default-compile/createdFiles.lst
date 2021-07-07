@@ -1,0 +1,13 @@
+za\gov\sars\sms\domain\Facility.class
+za\gov\sars\sms\domain\Employee.class
+za\gov\sars\sms\domain\Person.class
+za\gov\sars\sms\domain\Address.class
+za\gov\sars\sms\domain\SchoolSystemUser.class
+za\gov\sars\sms\domain\Attendence.class
+za\gov\sars\sms\domain\BaseEntity.class
+za\gov\sars\sms\domain\Student.class
+za\gov\sars\sms\domain\Grade.class
+za\gov\sars\sms\domain\ContactDetail.class
+za\gov\sars\sms\domain\Assessment.class
+za\gov\sars\sms\domain\School.class
+za\gov\sars\sms\domain\Subject.class

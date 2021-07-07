@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+
+    </h:head>
+    <h:body>
+        <ui:composition template="/template/template.xhtml">
+            <ui:define name="maincontent">
+                <b:panel rendered="#{activeUser.systeAdmin or activeUser.officeAdmin}" look="primary" title="Employee" collapsible="false">
+                    <b:panelGrid colSpans="12" size="md" style-class="ui-fluid">
+                        <p:fieldset legend="Personal Information">
+                            <b:inputText label="First Name" value="#{profileBean.staff.firstName}"/>
+                            <b:inputText label="Last Name" value="#{profileBean.staff.lastName}"/>
+                            <b:inputText label="Identity Number" value="#{profileBean.staff.identityNo}" readonly="true"/>                            
+                            <b:inputText label="Gender" value="#{profileBean.staff.gender.toString()}" readonly="true"/>
+                            <b:inputText label="Hired Date" value="#{profileBean.staff.createdDate}" readonly="true"/>
+                            <b:inputText label="Employee Number" value="#{profileBean.staff.employeeId}" readonly="true"/>
+                            <b:inputText label="Cellphone Number" value="#{profileBean.staff.contactDetail.cellphoneNo}"/>
+                            <b:inputText label="Telephone Number" value="#{profileBean.staff.contactDetail.telephoneNo}"/>
+                            <b:inputText label="Email Address" value="#{profileBean.staff.contactDetail.email}"/>
+                        </p:fieldset>
+                    </b:panelGrid>
+                    <p:dataGrid value="#{profileBean.staff.addresses}" var="address" columns="2">
+                        <b:panelGrid col-spans="12" size="md" style-class="ui-fluid">
+                            <p:fieldset legend="#{address.addressType.toString()}">
+                                <b:inputText value="#{address.addressLine1}" label="Address Line 1" field-size="md" readonly="#{address.addressType eq 'POSTAL'}"/>
+                                <b:inputText value="#{address.addressLine2}" label="Address Line 2" field-size="md"/>
+                                <b:inputText value="#{address.street}" label="Street" field-size="md" readonly="#{address.addressType eq 'POSTAL'}"/>
+                                <b:inputText value="#{address.area}" label="Area" field-size="md"/>
+                                <b:inputText value="#{address.code}" label="Code" field-size="md"/>
+                            </p:fieldset>
+                        </b:panelGrid>
+                    </p:dataGrid>
+                    <b:panelGrid colSpans="12" size="md" style-class="ui-fluid">
+                        <p:fieldset legend="User Information">
+                            <b:inputText label="Username" value="#{profileBean.systemUser.username}" readonly="true"/>
+                            <b:inputText label="Password" value="#{profileBean.systemUser.password}"/>
+                            <b:inputText label="Confirm Password" value="#{profileBean.systemUser.confirmPassword}"/>
+                        </p:fieldset>
+                    </b:panelGrid>
+                    <f:facet name="footer">
+                        <p:toolbar>
+                            <f:facet name="right">
+                                <b:commandButton size="xs" look="success" value="save" action="#{profileBean.saveEmployee(profileBean.employee, profileBean.systemUser)}" update="@form"/>
+                                <p:spacer width="15px"/>
+                                <b:commandButton size="xs" look="danger" value="cancel" action="#{profileBean.cancel()}" update="@form"/>
+                            </f:facet>
+                        </p:toolbar>
+                    </f:facet>
+                </b:panel>
+                <b:panel rendered="#{activeUser.principal or activeUser.headOfDepartment or activeUser.educator}" look="primary" title="Employee" collapsible="false">
+                    <b:panelGrid colSpans="12" size="md" style-class="ui-fluid">
+                        <p:fieldset legend="Personal Information">
+                            <b:inputText label="First Name" value="#{profileBean.staff.firstName}"/>
+                            <b:inputText label="Last Name" value="#{profileBean.staff.lastName}"/>
+                            <b:inputText label="Identity Number" value="#{profileBean.staff.identityNo}" readonly="true"/>                            
+                            <b:inputText label="Gender" value="#{profileBean.staff.gender.toString()}" readonly="true"/>
+                            <b:inputText label="Hired Date" value="#{profileBean.staff.createdDate}" readonly="true"/>
+                            <b:inputText label="Employee Number" value="#{profileBean.staff.employeeId}" readonly="true"/>
+                            <b:inputText label="Cellphone Number" value="#{profileBean.staff.contactDetail.cellphoneNo}"/>
+                            <b:inputText label="Telephone Number" value="#{profileBean.staff.contactDetail.telephoneNo}"/>
+                            <b:inputText label="Email Address" value="#{profileBean.staff.contactDetail.email}"/>
+                        </p:fieldset>
+                    </b:panelGrid>
+                    <p:dataGrid value="#{profileBean.staff.addresses}" var="address" columns="2">
+                        <b:panelGrid col-spans="12" size="md" style-class="ui-fluid">
+                            <p:fieldset legend="EMPLOYEE #{address.addressType.toString()}">
+                                <b:inputText value="#{address.addressLine1}" label="Address Line 1" field-size="md" readonly="#{address.addressType eq 'POSTAL'}"/>
+                                <b:inputText value="#{address.addressLine2}" label="Address Line 2" field-size="md"/>
+                                <b:inputText value="#{address.street}" label="Street" field-size="md" readonly="#{address.addressType eq 'POSTAL'}"/>
+                                <b:inputText value="#{address.area}" label="Area" field-size="md"/>
+                                <b:inputText value="#{address.code}" label="Code" field-size="md"/>
+                            </p:fieldset>
+                        </b:panelGrid>
+                    </p:dataGrid>
+                    <b:panelGrid colSpans="6,6" size="md" style-class="ui-fluid">
+                        <p:fieldset legend="Subjects Details">
+                            <p:dataTable value="#{profileBean.staff.subjects}" var="subject" reflow="true">
+                                <p:column headerText="Subject Name">
+                                    <h:outputText value="#{subject.name}"/>
+                                </p:column>
+                                <p:column headerText="Subject Code">
+                                    <h:outputText value="#{subject.code}"/>
+                                </p:column>                       
+                            </p:dataTable>
+                        </p:fieldset>
+                        <p:fieldset legend="Grades Details">
+                            <p:dataTable value="#{profileBean.staff.grades}" var="grade" reflow="true">
+                                <p:column headerText="Subject Name">
+                                    <h:outputText value="#{grade.designation}"/>
+                                </p:column>                      
+                            </p:dataTable>
+                        </p:fieldset>
+                    </b:panelGrid>
+                    <b:panelGrid colSpans="12" size="md" style-class="ui-fluid">
+                        <p:fieldset legend="User Information">
+                            <b:inputText label="Username" value="#{profileBean.systemUser.username}" readonly="true"/>
+                            <b:inputText label="Password" value="#{profileBean.systemUser.password}"/>
+                            <b:inputText label="Confirm Password" value="#{profileBean.systemUser.confirmPassword}"/>
+                        </p:fieldset>
+                    </b:panelGrid>
+                    <f:facet name="footer">
+                        <p:toolbar>
+                            <f:facet name="right">
+                                <b:commandButton size="xs" look="success" value="save" action="#{profileBean.saveEmployee(profileBean.employee, profileBean.systemUser)}" update="@form"/>
+                                <p:spacer width="15px"/>
+                                <b:commandButton size="xs" look="danger" value="cancel" action="#{profileBean.cancel()}" update="@form"/>
+                            </f:facet>
+                        </p:toolbar>
+                    </f:facet>
+                </b:panel>
+                <b:panel rendered="#{activeUser.learner}" look="primary" title="Student" collapsible="false">
+                    <b:panelGrid colSpans="12" size="md" style-class="ui-fluid">
+                        <p:fieldset legend="Personal Information">
+                            <b:inputText label="First Name" value="#{profileBean.student.firstName}"/>
+                            <b:inputText label="Last Name" value="#{profileBean.student.lastName}"/>
+                            <b:inputText label="Identity Number" value="#{profileBean.student.identityNo}" readonly="true"/>                            
+                            <b:inputText label="Gender" value="#{profileBean.student.gender.toString()}" readonly="true"/>
+                            <b:inputText label="Registered Date" value="#{profileBean.student.createdDate}" readonly="true"/>
+                            <b:inputText label="Student Number" value="#{profileBean.student.studentNo}" readonly="true"/>
+                            <b:inputText label="Grade/Level" value="#{profileBean.student.grade.designation}" readonly="true"/>
+                            <b:inputText label="Cellphone Number" value="#{profileBean.student.contactDetail.cellphoneNo}"/>
+                            <b:inputText label="Telephone Number" value="#{profileBean.student.contactDetail.telephoneNo}"/>
+                            <b:inputText label="Email Address" value="#{profileBean.student.contactDetail.email}"/>
+                        </p:fieldset>
+                    </b:panelGrid>
+                    <p:dataGrid value="#{profileBean.student.addresses}" var="address" columns="2">
+                        <b:panelGrid col-spans="12" size="md" style-class="ui-fluid">
+                            <p:fieldset legend="STUDENT #{address.addressType.toString()}">
+                                <b:inputText value="#{address.addressLine1}" label="Address Line 1" field-size="md" readonly="#{address.addressType eq 'POSTAL'}"/>
+                                <b:inputText value="#{address.addressLine2}" label="Address Line 2" field-size="md"/>
+                                <b:inputText value="#{address.street}" label="Street" field-size="md" readonly="#{address.addressType eq 'POSTAL'}"/>
+                                <b:inputText value="#{address.area}" label="Area" field-size="md"/>
+                                <b:inputText value="#{address.code}" label="Code" field-size="md"/>
+                            </p:fieldset>
+                        </b:panelGrid>
+                    </p:dataGrid>
+                    <b:panelGrid colSpans="12" size="md" style-class="ui-fluid">
+                        <p:fieldset legend="School Details">
+                            <p:dataTable value="#{profileBean.student.subjects}" var="subject" reflow="true">
+                                <p:column headerText="Subject Name">
+                                    <h:outputText value="#{subject.name}"/>
+                                </p:column>
+                                <p:column headerText="Subject Code">
+                                    <h:outputText value="#{subject.code}"/>
+                                </p:column>
+                                <p:column headerText="Educator's Full Names">
+                                    <h:outputText value="#{subject.educator.firstName} #{subject.educator.lastName}"/>
+                                </p:column>                       
+                            </p:dataTable>
+                        </p:fieldset>
+                    </b:panelGrid>
+                    <b:panelGrid colSpans="12" size="md" style-class="ui-fluid">
+                        <p:fieldset legend="User Information">
+                            <b:inputText label="Username" value="#{profileBean.systemUser.username}" readonly="true"/>
+                            <b:inputText label="Password" value="#{profileBean.systemUser.password}"/>
+                            <b:inputText label="Confirm Password" value="#{profileBean.systemUser.confirmPassword}"/>
+                        </p:fieldset>
+                    </b:panelGrid>
+                    <f:facet name="footer">
+                        <p:toolbar>
+                            <f:facet name="right">
+                                <b:commandButton size="xs" look="success" value="save" action="#{profileBean.saveStudent(profileBean.student,profileBean.systemUser)}" update="@form"/>
+                                <p:spacer width="15px"/>
+                                <b:commandButton size="xs" look="danger" value="cancel" action="#{profileBean.cancel()}" update="@form"/>
+                            </f:facet>
+                        </p:toolbar>
+                    </f:facet>
+                </b:panel>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
