@@ -11,7 +11,6 @@ package za.gov.sars.sms.common;
  */
 public enum EmployeeType {
     GENERAL_WORKER("General Staff"),
-    LEARNER("Learner"),
     EDUCATOR("Educator"),
     PRINCIPAL("Principal"),
     HOD("Head of Department"),

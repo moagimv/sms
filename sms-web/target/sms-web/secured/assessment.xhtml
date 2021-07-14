@@ -80,14 +80,20 @@
                         <b:dateTimePicker mode="icon-popup" value="#{assessmentBean.assessment.dueDate}" label="Due Date" field-size="md"/>
                         <b:inputText value="#{assessmentBean.assessment.fullMark}" label="Full Mark" field-size="md"/>
                         <b:inputText value="#{assessmentBean.assessment.passMark}" label="Pass Mark" field-size="md"/>
-                        <b:inputText value="#{assessmentBean.assessment.studentMark}" label="Student Mark" field-size="md"/>
-                        <p:selectOneMenu label="Grade" value="#{assessmentBean.assessment.grade}" converter="entityConverter" filter="false">
-                            <p:ajax update="@form" listener="#{assessmentBean.gradeSelectionListener}"/>
-                            <f:selectItems value="#{assessmentBean.educator.grades}" var="grade" itemLabel="#{grade.designation}" itemValue="#{grade}"/>
-                        </p:selectOneMenu>
-                        <p:selectOneMenu rendered="#{assessmentBean.visible}" label="Student" value="#{assessmentBean.assessment.student}" converter="entityConverter" filter="false">
-                            <f:selectItems value="#{assessmentBean.students}" var="student" itemLabel="#{student.firstName} #{student.lastName} #{student.identityNo}" itemValue="#{student}"/>
-                        </p:selectOneMenu>
+                        <b:formGroup>
+                            <p:outputLabel value="Grade"/>
+                            <p:selectOneMenu label="Grade" value="#{assessmentBean.assessment.grade}" converter="entityConverter" filter="false">
+                                <p:ajax update="@form" listener="#{assessmentBean.gradeSelectionListener}"/>
+                                <f:selectItems value="#{assessmentBean.educator.grades}" var="grade" itemLabel="#{grade.designation}" itemValue="#{grade}"/>
+                            </p:selectOneMenu>
+                        </b:formGroup>
+                        <b:formGroup rendered="#{assessmentBean.visible}">
+                            <p:outputLabel value="Student"/>
+                            <p:selectOneMenu label="Student" value="#{assessmentBean.assessment.student}" converter="entityConverter" filter="false">
+                                <f:selectItems value="#{assessmentBean.students}" var="student" itemLabel="#{student.firstName} #{student.lastName} #{student.identityNo}" itemValue="#{student}"/>
+                            </p:selectOneMenu>
+                        </b:formGroup>
+                        <b:inputText rendered="#{assessmentBean.visible}" value="#{assessmentBean.assessment.studentMark}" label="Student Mark" field-size="md"/>
                     </b:panelGrid>
                     <f:facet name="footer">
                         <p:toolbar>

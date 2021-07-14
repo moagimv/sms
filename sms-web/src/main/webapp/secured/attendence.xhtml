@@ -86,23 +86,35 @@
                         </p:column>
                     </p:dataTable>
                 </b:panel>
-                <b:panel rendered="#{attendenceBean.add}" look="primary" title="Assessment" collapsible="false">
+                <b:panel rendered="#{attendenceBean.add}" look="primary" title="Attendence" collapsible="false">
                     <b:panelGrid colSpans="12" size="md" style-class="ui-fluid">
                         <b:inputText value="#{attendenceBean.attendence.name}" label="Session Name" field-size="md"/>
                         <b:inputText value="#{attendenceBean.attendence.description}" label="Session Description" field-size="md"/>
                         <b:dateTimePicker mode="icon-popup" value="#{attendenceBean.attendence.attendanceDate}" label="Session Date" field-size="md"/>
-                        <p:selectOneMenu label="Grade" value="#{attendenceBean.attendence.grade}" converter="entityConverter" filter="false">
-                            <f:selectItems value="#{attendenceBean.educator.grades}" var="grade" itemLabel="#{grade.toString()}" itemValue="#{grade}"/>
-                        </p:selectOneMenu>
-                        <p:selectOneMenu label="Subject" value="#{attendenceBean.attendence.subject}" converter="entityConverter" filter="false">
-                            <f:selectItems value="#{attendenceBean.educator.subjects}" var="subject" itemLabel="#{subject.name} #{subject.code}" itemValue="#{subject}"/>
-                        </p:selectOneMenu>
-                        <p:selectOneMenu label="Facility" value="#{attendenceBean.attendence.facility}" converter="entityConverter" filter="false">
-                            <f:selectItems value="#{attendenceBean.facilities}" var="facility" itemLabel="#{facility.name} #{facility.location}" itemValue="#{facility}"/>
-                        </p:selectOneMenu>
-                        <p:selectOneMenu label="Facility" value="#{attendenceBean.attendence.status}" converter="entityConverter" filter="false">
-                            <f:selectItems value="#{attendenceBean.attendanceStatuses}" var="status" itemLabel="#{status.toString()}" itemValue="#{status}"/>
-                        </p:selectOneMenu>
+                        <b:formGroup>
+                            <p:outputLabel value="Grade"/>
+                            <p:selectOneMenu label="Grade" value="#{attendenceBean.attendence.grade}" converter="entityConverter" filter="false">
+                                <f:selectItems value="#{attendenceBean.educator.grades}" var="grade" itemLabel="#{grade.toString()}" itemValue="#{grade}"/>
+                            </p:selectOneMenu>
+                        </b:formGroup>
+                        <b:formGroup>
+                            <p:outputLabel value="Subject"/>
+                            <p:selectOneMenu label="Subject" value="#{attendenceBean.attendence.subject}" converter="entityConverter" filter="false">
+                                <f:selectItems value="#{attendenceBean.educator.subjects}" var="subject" itemLabel="#{subject.name} #{subject.code}" itemValue="#{subject}"/>
+                            </p:selectOneMenu>
+                        </b:formGroup>
+                        <b:formGroup>
+                            <p:outputLabel value="Facility"/>
+                            <p:selectOneMenu label="Facility" value="#{attendenceBean.attendence.facility}" converter="entityConverter" filter="false">
+                                <f:selectItems value="#{attendenceBean.facilities}" var="facility" itemLabel="#{facility.name} #{facility.location}" itemValue="#{facility}"/>
+                            </p:selectOneMenu>
+                        </b:formGroup>
+                        <b:formGroup>
+                            <p:outputLabel value="Status"/>
+                            <p:selectOneMenu label="Status" value="#{attendenceBean.attendence.status}" converter="entityConverter" filter="false">
+                                <f:selectItems value="#{attendenceBean.attendanceStatuses}" var="status" itemLabel="#{status.toString()}" itemValue="#{status}"/>
+                            </p:selectOneMenu>
+                        </b:formGroup>
                     </b:panelGrid>
                     <f:facet name="footer">
                         <p:toolbar>

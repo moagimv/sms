@@ -23,7 +23,7 @@ public class SchoolHelper {
         school.setCreatedBy("test");
         school.setCreatedDate(new Date());
         school.setSchoolName("Tumi High School");
-        school.setRegNo("sch001hs05");
+        school.setRegNo("sch001hs05");   
         
         ContactDetail contactDetail = new ContactDetail();
         contactDetail.setCreatedBy("test");
@@ -32,7 +32,7 @@ public class SchoolHelper {
         contactDetail.setTelephoneNo("0127139852");
         contactDetail.setEmail("info@school.gov.za");
         
-        school.setContactDetail(contactDetail);
+        school.setContactDetail(contactDetail); 
         
         Address ressAddress = new Address();        
         ressAddress.setCreatedBy("test");
@@ -42,7 +42,7 @@ public class SchoolHelper {
         ressAddress.setAddressLine2("School Section");
         ressAddress.setStreet("00 School Street");
         ressAddress.setArea("School");
-        ressAddress.setCode("0001");
+        ressAddress.setCode("0001"); 
         
         Address postalAddress = new Address();        
         postalAddress.setCreatedBy("test");

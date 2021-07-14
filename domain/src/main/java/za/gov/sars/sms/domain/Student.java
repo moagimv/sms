@@ -11,6 +11,9 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -25,12 +28,15 @@ import org.hibernate.envers.Audited;
 @Entity
 @Table(name = "student")
 public class Student extends Person{
-    @Column(name = "student_number")
+    @Column(name = "student_number", unique = true)
     private String studentNo;
-    @OneToOne(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
     private Grade grade;
-    @OneToMany(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
-    private List<Subject> subjects = new ArrayList<>();
+    @ManyToMany(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
+    @JoinTable(name = "student_subject", joinColumns = {
+        @JoinColumn(name = "student_id")}, inverseJoinColumns = {
+        @JoinColumn(name = "subject_id")})
+    private List<Subject> subjectsList = new ArrayList<>();
     @ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
     private School school;
 
@@ -50,12 +56,12 @@ public class Student extends Person{
         this.grade = grade;
     }
 
-    public List<Subject> getSubjects() {
-        return subjects;
+    public List<Subject> getSubjectsList() {
+        return subjectsList;
     }
 
-    public void setSubjects(List<Subject> subjects) {
-        this.subjects = subjects;
+    public void setSubjectsList(List<Subject> subjectsList) {
+        this.subjectsList = subjectsList;
     }
 
     public School getSchool() {

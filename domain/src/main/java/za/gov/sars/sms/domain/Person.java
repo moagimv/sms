@@ -36,7 +36,7 @@ public class Person extends BaseEntity{
     private Gender gender;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Address> addresses = new ArrayList<>();
-    @OneToOne(cascade = {CascadeType.ALL,CascadeType.MERGE},fetch = FetchType.EAGER,optional = true)
+    @OneToOne(cascade = {CascadeType.ALL},fetch = FetchType.EAGER,optional = true)
     @JoinColumn(name = "contact_detail")
     private ContactDetail contactDetail;
     @Enumerated(EnumType.STRING)

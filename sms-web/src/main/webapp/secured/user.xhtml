@@ -44,6 +44,9 @@
                     <p:column headerText="Email Address">
                         <h:outputText value="#{sysUser.contactDetail.email}"/>
                     </p:column>
+                    <p:column headerText="Status">
+                        <h:outputText value="#{sysUser.systemUserStatus.toString()}"/>
+                    </p:column>
                     <p:column headerText="Action">
                         <b:commandButton icon-size="lg" icon-awesome="pencil" action="#{systemUserBean.addOrUpdate(sysUser)}" update="@form"/>
                         <p:spacer width="5px"/>
@@ -55,19 +58,31 @@
                         <b:inputText value="#{systemUserBean.systemUser.username}" label="Username" field-size="md"/>
                         <b:inputText value="#{systemUserBean.systemUser.password}" label="Password" field-size="md"/>
                         <b:inputText value="#{systemUserBean.systemUser.confirmPassword}" label="Confirm Password" field-size="md"/>
-                        <p:selectOneMenu label="Type" value="#{systemUserBean.systemUser.systemUserType}" converter="entityConverter" filter="false">
-                            <p:ajax update="@form" listener="#{systemUserBean.systemUserTypeListener}"/>
-                            <f:selectItems value="#{systemUserBean.systemUserTypes}" var="userType" itemLabel="#{userType.toString()}" itemValue="#{userType}"/>
-                        </p:selectOneMenu>
-                        <p:selectOneMenu rendered="#{systemUserBean.visible}" label="Identifier" value="#{systemUserBean.systemUser.identifier}" converter="entityConverter" filter="false">
-                            <f:selectItems value="#{systemUserBean.employees}" var="emp" itemLabel="#{emp.firstName} #{emp.lastName} #{emp.employeeId}" itemValue="#{emp.employeeId}"/>
-                        </p:selectOneMenu>
-                        <p:selectOneMenu rendered="#{systemUserBean.visibleTab}" label="Identifier" value="#{systemUserBean.systemUser.identifier}" converter="entityConverter" filter="false">
-                            <f:selectItems value="#{systemUserBean.students}" var="stud" itemLabel="#{stud.firstName} #{stud.lastName} #{stud.studentNo}" itemValue="#{stud.studentNo}"/>
-                        </p:selectOneMenu>
-                        <p:selectOneMenu label="Status" value="#{systemUserBean.systemUser.systemUserStatus}" converter="entityConverter" filter="false">
-                            <f:selectItems value="#{systemUserBean.systemUserStatuses}" var="userStatus" itemLabel="#{userStatus.toString()}" itemValue="#{userStatus}"/>
-                        </p:selectOneMenu>                                                
+                        <b:formGroup>
+                            <p:outputLabel value="System User Type"/>
+                            <p:selectOneMenu label="Type" value="#{systemUserBean.systemUser.systemUserType}" converter="entityConverter" filter="false">
+                                <p:ajax update="@form" listener="#{systemUserBean.systemUserTypeListener}"/>
+                                <f:selectItems value="#{systemUserBean.systemUserTypes}" var="userType" itemLabel="#{userType.toString()}" itemValue="#{userType}"/>
+                            </p:selectOneMenu>
+                        </b:formGroup>
+                        <b:formGroup rendered="#{systemUserBean.visible}">
+                            <p:outputLabel value="Employee"/>
+                            <p:selectOneMenu label="Employee" value="#{systemUserBean.systemUser.identifier}" converter="entityConverter" filter="false">
+                                <f:selectItems value="#{systemUserBean.employees}" var="emp" itemLabel="#{emp.firstName} #{emp.lastName} #{emp.employeeId}" itemValue="#{emp.employeeId}"/>
+                            </p:selectOneMenu>
+                        </b:formGroup>
+                        <b:formGroup rendered="#{systemUserBean.visibleTab}">
+                            <p:outputLabel value="Student"/>
+                            <p:selectOneMenu label="Student" value="#{systemUserBean.systemUser.identifier}" converter="entityConverter" filter="false">
+                                <f:selectItems value="#{systemUserBean.students}" var="stud" itemLabel="#{stud.firstName} #{stud.lastName} #{stud.studentNo}" itemValue="#{stud.studentNo}"/>
+                            </p:selectOneMenu>
+                        </b:formGroup>
+                        <b:formGroup>
+                            <p:outputLabel value="System User Status"/>
+                            <p:selectOneMenu label="Status" value="#{systemUserBean.systemUser.systemUserStatus}" converter="entityConverter" filter="false">
+                                <f:selectItems value="#{systemUserBean.systemUserStatuses}" var="userStatus" itemLabel="#{userStatus.toString()}" itemValue="#{userStatus}"/>
+                            </p:selectOneMenu> 
+                        </b:formGroup>
                     </b:panelGrid>
                     <f:facet name="footer">
                         <p:toolbar>

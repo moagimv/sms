@@ -8,6 +8,8 @@ package za.gov.sars.sms.service;
 import java.util.Date;
 import za.gov.sars.sms.domain.Assessment;
 import za.gov.sars.sms.persistence.AssessmentRepository;
+import za.gov.sars.sms.persistence.EmployeeRepository;
+import za.gov.sars.sms.persistence.StudentRepository;
 
 /**
  *
@@ -15,7 +17,8 @@ import za.gov.sars.sms.persistence.AssessmentRepository;
  */
 public class AssessmentHelper {
     
-    public static void addAssessment(AssessmentRepository assessmentRepository){
+    public static void addAssessment(AssessmentRepository assessmentRepository, EmployeeRepository employeeRepository, StudentRepository studentRepository){
+        
         Assessment assessment1 = new Assessment();
         assessment1.setCreatedBy("test");
         assessment1.setCreatedDate(new Date());
@@ -24,6 +27,8 @@ public class AssessmentHelper {
         assessment1.setFullMark(100.00D);
         assessment1.setPassMark(50.00D);
         assessment1.setDueDate(new Date());
+        assessment1.setEducator(employeeRepository.findAll().get(employeeRepository.findAll().size() - 5));
+        assessment1.setStudent(studentRepository.findAll().get(studentRepository.findAll().size() - 3));
         assessmentRepository.save(assessment1);
         
         Assessment assessment2 = new Assessment();
@@ -34,6 +39,9 @@ public class AssessmentHelper {
         assessment2.setFullMark(50.00D);
         assessment2.setPassMark(20.00D);
         assessment2.setDueDate(new Date());
+        assessment2.setEducator(employeeRepository.findAll().get(employeeRepository.findAll().size() - 5));
+        assessment2.setStudent(studentRepository.findAll().get(studentRepository.findAll().size() - 4));
         assessmentRepository.save(assessment2);
+        
     }
 }

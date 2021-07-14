@@ -55,7 +55,7 @@ public class EmployeeBean extends BaseBean {
     private List<Gender> genders;
     private List<PersonType> personTypes;
     
-    private Employee employee;
+    private Employee staff;
     
     private School school;
 
@@ -68,6 +68,7 @@ public class EmployeeBean extends BaseBean {
         addressTypes = Arrays.asList(AddressType.values());
         employeeTypes = Arrays.asList(EmployeeType.values());
         genders = Arrays.asList(Gender.values());
+        personTypes = Arrays.asList(PersonType.values());
         school = schoolService.listAll().get(schoolService.listAll().size() - 1);
     }
 
@@ -76,14 +77,13 @@ public class EmployeeBean extends BaseBean {
         if (emp != null) {
             emp.setUpdatedBy(getActiveUser().getIdentifier());
             emp.setUpdatedDate(new Date());
-            employee = emp;
+            staff = emp;
         } else {
-            employee = new Employee();
-            employee.setCreatedBy(getActiveUser().getIdentifier());
-            employee.setCreatedDate(new Date());
-            employee.setPersonType(PersonType.EMPLOYEE);
-            employee.setSchool(school);
-            employee.setPersonType(PersonType.EMPLOYEE);
+            staff = new Employee();
+            staff.setCreatedBy(getActiveUser().getIdentifier());
+            staff.setCreatedDate(new Date());
+            staff.setPersonType(PersonType.EMPLOYEE);
+            staff.setSchool(school);
             
             Address physicalAddress = new Address();
             physicalAddress.setAddressType(AddressType.RESIDENTIAL);
@@ -95,16 +95,16 @@ public class EmployeeBean extends BaseBean {
             postalAddress.setCreatedBy(getActiveUser().getIdentifier());
             postalAddress.setCreatedDate(new Date());
 
-            employee.addAddress(physicalAddress);
-            employee.addAddress(postalAddress);
+            staff.addAddress(physicalAddress);
+            staff.addAddress(postalAddress);
 
             ContactDetail contactDetail = new ContactDetail();
             contactDetail.setCreatedBy(getActiveUser().getIdentifier());
             contactDetail.setCreatedDate(new Date());
             
-            employee.setContactDetail(contactDetail);
+            staff.setContactDetail(contactDetail);
             
-            employees.add(0, employee);
+            employees.add(0, staff);
         }
     }
     
@@ -142,7 +142,7 @@ public class EmployeeBean extends BaseBean {
     }
 
     public void employeeTypeListener() {
-        if (employee.getEmployeeType().equals(EmployeeType.EDUCATOR) || employee.getEmployeeType().equals(EmployeeType.HOD) || employee.getEmployeeType().equals(EmployeeType.PRINCIPAL)) {
+        if (staff.getEmployeeType().equals(EmployeeType.EDUCATOR) || staff.getEmployeeType().equals(EmployeeType.HOD) || staff.getEmployeeType().equals(EmployeeType.PRINCIPAL)) {
             setVisible(true);
         } else {
             setVisible(false);
@@ -205,12 +205,12 @@ public class EmployeeBean extends BaseBean {
         this.personTypes = personTypes;
     }
 
-    public Employee getEmployee() {
-        return employee;
+    public Employee getStaff() {
+        return staff;
     }
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
+    public void setStaff(Employee staff) {
+        this.staff = staff;
     }
 
 }

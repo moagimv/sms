@@ -10,6 +10,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -40,13 +41,13 @@ public class Assessment extends BaseEntity{
     private Double passMark;
     @Column(name = "student_mark")
     private Double studentMark;
-    @OneToOne(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
     private Grade grade;
-    @OneToOne(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
     private Subject subject;
-    @OneToOne(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
     private Student student;
-    @OneToOne(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
     private Employee educator;
 
     public String getName() {

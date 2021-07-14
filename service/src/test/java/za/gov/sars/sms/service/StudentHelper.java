@@ -12,7 +12,10 @@ import za.gov.sars.sms.common.PersonType;
 import za.gov.sars.sms.domain.Address;
 import za.gov.sars.sms.domain.ContactDetail;
 import za.gov.sars.sms.domain.Student;
+import za.gov.sars.sms.persistence.GradeRepository;
+import za.gov.sars.sms.persistence.SchoolRepository;
 import za.gov.sars.sms.persistence.StudentRepository;
+import za.gov.sars.sms.persistence.SubjectRepository;
 
 /**
  *
@@ -20,7 +23,7 @@ import za.gov.sars.sms.persistence.StudentRepository;
  */
 public class StudentHelper {
     
-    public static void addStudent(StudentRepository studentRepository){
+    public static void addStudent(StudentRepository studentRepository,  GradeRepository gradeRepository, SubjectRepository subjectRepository, SchoolRepository schoolRepository){
         Student student1 = new Student();
         student1.setCreatedBy("test");
         student1.setCreatedDate(new Date());
@@ -30,6 +33,9 @@ public class StudentHelper {
         student1.setIdentityNo("0511205463081");
         student1.setStudentNo("10010");
         student1.setGender(Gender.MALE);
+        student1.setSchool(schoolRepository.findAll().get(schoolRepository.findAll().size() - 1));
+        student1.setGrade(gradeRepository.findAll().get(gradeRepository.findAll().size() - 1));
+        student1.setSubjectsList(subjectRepository.findAll());
         
         ContactDetail contactDetail1 = new ContactDetail();
         contactDetail1.setCreatedBy("test");
@@ -72,6 +78,9 @@ public class StudentHelper {
         student2.setIdentityNo("0605249641080");
         student2.setStudentNo("10011");
         student2.setGender(Gender.FEMALE);
+        student2.setSchool(schoolRepository.findAll().get(schoolRepository.findAll().size() - 1));
+        student2.setGrade(gradeRepository.findAll().get(gradeRepository.findAll().size() - 2));
+        student2.setSubjectsList(subjectRepository.findAll());
         
         ContactDetail contactDetail2 = new ContactDetail();
         contactDetail2.setCreatedBy("test");
@@ -114,6 +123,9 @@ public class StudentHelper {
         student3.setIdentityNo("0402285416084");
         student3.setStudentNo("10012");
         student3.setGender(Gender.FEMALE);
+        student3.setSchool(schoolRepository.findAll().get(schoolRepository.findAll().size() - 1));
+        student3.setGrade(gradeRepository.findAll().get(gradeRepository.findAll().size() - 3));
+        student3.setSubjectsList(subjectRepository.findAll());
         
         ContactDetail contactDetail3 = new ContactDetail();
         contactDetail3.setCreatedBy("test");
@@ -156,6 +168,9 @@ public class StudentHelper {
         student4.setIdentityNo("1007095241081");
         student4.setStudentNo("10013");
         student4.setGender(Gender.MALE);
+        student4.setSchool(schoolRepository.findAll().get(schoolRepository.findAll().size() - 1));
+        student4.setGrade(gradeRepository.findAll().get(gradeRepository.findAll().size() - 4));
+        student4.setSubjectsList(subjectRepository.findAll());
         
         ContactDetail contactDetail4 = new ContactDetail();
         contactDetail4.setCreatedBy("test");
@@ -198,6 +213,9 @@ public class StudentHelper {
         student5.setIdentityNo("0810108547088");
         student5.setStudentNo("10014");
         student5.setGender(Gender.MALE);
+        student5.setSchool(schoolRepository.findAll().get(schoolRepository.findAll().size() - 1));
+        student5.setGrade(gradeRepository.findAll().get(gradeRepository.findAll().size() - 1));
+        student5.setSubjectsList(subjectRepository.findAll());
         
         ContactDetail contactDetail5 = new ContactDetail();
         contactDetail5.setCreatedBy("test");
@@ -240,6 +258,9 @@ public class StudentHelper {
         student6.setIdentityNo("1201017485080");
         student6.setStudentNo("10015");
         student6.setGender(Gender.FEMALE);
+        student6.setSchool(schoolRepository.findAll().get(schoolRepository.findAll().size() - 1));
+        student6.setGrade(gradeRepository.findAll().get(gradeRepository.findAll().size() - 2));
+        student6.setSubjectsList(subjectRepository.findAll());
         
         ContactDetail contactDetail6 = new ContactDetail();
         contactDetail6.setCreatedBy("test");

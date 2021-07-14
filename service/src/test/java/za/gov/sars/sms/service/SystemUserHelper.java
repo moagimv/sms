@@ -45,6 +45,7 @@ public class SystemUserHelper {
                 systemUser1.setLastName(emp.getLastName());
                 systemUser1.setIdentityNo(emp.getIdentityNo());
                 systemUser1.setGender(emp.getGender());
+                systemUser1.setSchool(emp.getSchool());
 
                 for (Address address : emp.getAddresses()) {
                     Address newAddress = new Address();
@@ -85,6 +86,7 @@ public class SystemUserHelper {
                 systemUser2.setLastName(emp.getLastName());
                 systemUser2.setIdentityNo(emp.getIdentityNo());
                 systemUser2.setGender(emp.getGender());
+                systemUser2.setSchool(emp.getSchool());
 
                 for (Address address : emp.getAddresses()) {
                     Address newAddress = new Address();
@@ -124,6 +126,7 @@ public class SystemUserHelper {
                 systemUser3.setLastName(emp.getLastName());
                 systemUser3.setIdentityNo(emp.getIdentityNo());
                 systemUser3.setGender(emp.getGender());
+                systemUser3.setSchool(emp.getSchool());
 
                 for (Address address : emp.getAddresses()) {
                     Address newAddress = new Address();
@@ -163,6 +166,7 @@ public class SystemUserHelper {
                 systemUser4.setLastName(emp.getLastName());
                 systemUser4.setIdentityNo(emp.getIdentityNo());
                 systemUser4.setGender(emp.getGender());
+                systemUser4.setSchool(emp.getSchool());
 
                 for (Address address : emp.getAddresses()) {
                     Address newAddress = new Address();
@@ -204,6 +208,7 @@ public class SystemUserHelper {
             systemUser5.setLastName(student.getLastName());
             systemUser5.setIdentityNo(student.getIdentityNo());
             systemUser5.setGender(student.getGender());
+            systemUser5.setSchool(student.getSchool());
 
             for (Address address : student.getAddresses()) {
                 Address newAddress = new Address();

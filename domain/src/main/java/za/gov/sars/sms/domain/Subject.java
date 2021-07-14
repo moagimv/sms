@@ -5,11 +5,15 @@
  */
 package za.gov.sars.sms.domain;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.hibernate.envers.Audited;
@@ -28,8 +32,10 @@ public class Subject extends BaseEntity{
     private String code;
     @ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
     private School school;
-    @OneToOne(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
-    private Employee educator;
+    @ManyToMany(mappedBy = "subjects", cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
+    private List<Employee> educators = new ArrayList<>();
+    @ManyToMany(mappedBy = "subjectsList", cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
+    private List<Student> students = new ArrayList<>();
 
     public String getName() {
         return name;
@@ -55,12 +61,19 @@ public class Subject extends BaseEntity{
         this.school = school;
     }
 
-    public Employee getEducator() {
-        return educator;
+    public List<Employee> getEducators() {
+        return educators;
     }
 
-    public void setEducator(Employee educator) {
-        this.educator = educator;
+    public void setEducators(List<Employee> educators) {
+        this.educators = educators;
     }
-    
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }    
 }

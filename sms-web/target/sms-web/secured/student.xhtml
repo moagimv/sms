@@ -58,10 +58,19 @@
                         <b:inputText value="#{studentBean.student.firstName}" label="First Name" field-size="md"/>
                         <b:inputText value="#{studentBean.student.lastName}" label="Last Name" field-size="md"/>
                         <b:inputText value="#{studentBean.student.identityNo}" label="Identity Number" field-size="md"/>
-                        <p:selectOneMenu label="Gender" value="#{studentBean.student.gender}" converter="entityConverter" filter="false">
-                            <f:selectItems value="#{studentBean.genders}" var="gender" itemLabel="#{gender.toString()}" itemValue="#{gender}"/>
-                        </p:selectOneMenu>
+                        <b:formGroup>
+                            <p:outputLabel value="Gender"/>
+                            <p:selectOneMenu label="Gender" value="#{studentBean.student.gender}" converter="entityConverter" filter="false">
+                                <f:selectItems value="#{studentBean.genders}" var="gender" itemLabel="#{gender.toString()}" itemValue="#{gender}"/>
+                            </p:selectOneMenu>
+                        </b:formGroup>
                         <b:inputText value="#{studentBean.student.studentNo}" label="Student Number" field-size="md"/>
+                        <b:formGroup>
+                            <p:outputLabel value="Grade"/>
+                            <p:selectOneMenu label="Grade" value="#{studentBean.student.grade}" converter="entityConverter" filter="false">
+                                <f:selectItems value="#{studentBean.grades}" var="grade" itemLabel="#{grade.designation}" itemValue="#{grade}"/>
+                            </p:selectOneMenu>
+                        </b:formGroup>
                         <b:inputText value="#{studentBean.student.contactDetail.cellphoneNo}" label="Cellphone Number" field-size="md"/>
                         <b:inputText value="#{studentBean.student.contactDetail.telephoneNo}" label="Telephone Number" field-size="md"/>
                         <b:inputText value="#{studentBean.student.contactDetail.email}" label="Email Address" field-size="md"/>

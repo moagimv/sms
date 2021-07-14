@@ -20,7 +20,10 @@
                             <b:inputText label="Last Name" value="#{profileBean.staff.lastName}"/>
                             <b:inputText label="Identity Number" value="#{profileBean.staff.identityNo}" readonly="true"/>                            
                             <b:inputText label="Gender" value="#{profileBean.staff.gender.toString()}" readonly="true"/>
-                            <b:inputText label="Hired Date" value="#{profileBean.staff.createdDate}" readonly="true"/>
+                            <b:inputText label="Hired Date" value="#{profileBean.staff.createdDate}" readonly="true">
+                                <f:convertDateTime pattern="yyyy MM dd"/>
+                            </b:inputText>
+                            <b:inputText label="Position" value="#{profileBean.staff.employeeType.toString()}" readonly="true"/>
                             <b:inputText label="Employee Number" value="#{profileBean.staff.employeeId}" readonly="true"/>
                             <b:inputText label="Cellphone Number" value="#{profileBean.staff.contactDetail.cellphoneNo}"/>
                             <b:inputText label="Telephone Number" value="#{profileBean.staff.contactDetail.telephoneNo}"/>
@@ -40,6 +43,8 @@
                     </p:dataGrid>
                     <b:panelGrid colSpans="12" size="md" style-class="ui-fluid">
                         <p:fieldset legend="User Information">
+                            <b:inputText label="System User Role" value="#{profileBean.systemUser.systemUserType.toString()}" readonly="true"/>
+                            <b:inputText label="Status" value="#{profileBean.systemUser.systemUserStatus.toString()}" readonly="true"/>
                             <b:inputText label="Username" value="#{profileBean.systemUser.username}" readonly="true"/>
                             <b:inputText label="Password" value="#{profileBean.systemUser.password}"/>
                             <b:inputText label="Confirm Password" value="#{profileBean.systemUser.confirmPassword}"/>
@@ -62,7 +67,10 @@
                             <b:inputText label="Last Name" value="#{profileBean.staff.lastName}"/>
                             <b:inputText label="Identity Number" value="#{profileBean.staff.identityNo}" readonly="true"/>                            
                             <b:inputText label="Gender" value="#{profileBean.staff.gender.toString()}" readonly="true"/>
-                            <b:inputText label="Hired Date" value="#{profileBean.staff.createdDate}" readonly="true"/>
+                            <b:inputText label="Hired Date" value="#{profileBean.staff.createdDate}" readonly="true">
+                                <f:convertDateTime pattern="yyyy MM dd"/>
+                            </b:inputText>
+                            <b:inputText label="Position" value="#{profileBean.staff.employeeType.toString()}" readonly="true"/>
                             <b:inputText label="Employee Number" value="#{profileBean.staff.employeeId}" readonly="true"/>
                             <b:inputText label="Cellphone Number" value="#{profileBean.staff.contactDetail.cellphoneNo}"/>
                             <b:inputText label="Telephone Number" value="#{profileBean.staff.contactDetail.telephoneNo}"/>
@@ -71,7 +79,7 @@
                     </b:panelGrid>
                     <p:dataGrid value="#{profileBean.staff.addresses}" var="address" columns="2">
                         <b:panelGrid col-spans="12" size="md" style-class="ui-fluid">
-                            <p:fieldset legend="EMPLOYEE #{address.addressType.toString()}">
+                            <p:fieldset legend="#{address.addressType.toString()}">
                                 <b:inputText value="#{address.addressLine1}" label="Address Line 1" field-size="md" readonly="#{address.addressType eq 'POSTAL'}"/>
                                 <b:inputText value="#{address.addressLine2}" label="Address Line 2" field-size="md"/>
                                 <b:inputText value="#{address.street}" label="Street" field-size="md" readonly="#{address.addressType eq 'POSTAL'}"/>
@@ -101,6 +109,8 @@
                     </b:panelGrid>
                     <b:panelGrid colSpans="12" size="md" style-class="ui-fluid">
                         <p:fieldset legend="User Information">
+                            <b:inputText label="System User Role" value="#{profileBean.systemUser.systemUserType.toString()}" readonly="true"/>
+                            <b:inputText label="Status" value="#{profileBean.systemUser.systemUserStatus.toString()}" readonly="true"/>
                             <b:inputText label="Username" value="#{profileBean.systemUser.username}" readonly="true"/>
                             <b:inputText label="Password" value="#{profileBean.systemUser.password}"/>
                             <b:inputText label="Confirm Password" value="#{profileBean.systemUser.confirmPassword}"/>
@@ -123,7 +133,9 @@
                             <b:inputText label="Last Name" value="#{profileBean.student.lastName}"/>
                             <b:inputText label="Identity Number" value="#{profileBean.student.identityNo}" readonly="true"/>                            
                             <b:inputText label="Gender" value="#{profileBean.student.gender.toString()}" readonly="true"/>
-                            <b:inputText label="Registered Date" value="#{profileBean.student.createdDate}" readonly="true"/>
+                            <b:inputText label="Registered Date" value="#{profileBean.student.createdDate}" readonly="true">
+                                <f:convertDateTime pattern="yyyy MM dd"/>
+                            </b:inputText>
                             <b:inputText label="Student Number" value="#{profileBean.student.studentNo}" readonly="true"/>
                             <b:inputText label="Grade/Level" value="#{profileBean.student.grade.designation}" readonly="true"/>
                             <b:inputText label="Cellphone Number" value="#{profileBean.student.contactDetail.cellphoneNo}"/>
@@ -133,7 +145,7 @@
                     </b:panelGrid>
                     <p:dataGrid value="#{profileBean.student.addresses}" var="address" columns="2">
                         <b:panelGrid col-spans="12" size="md" style-class="ui-fluid">
-                            <p:fieldset legend="STUDENT #{address.addressType.toString()}">
+                            <p:fieldset legend="#{address.addressType.toString()}">
                                 <b:inputText value="#{address.addressLine1}" label="Address Line 1" field-size="md" readonly="#{address.addressType eq 'POSTAL'}"/>
                                 <b:inputText value="#{address.addressLine2}" label="Address Line 2" field-size="md"/>
                                 <b:inputText value="#{address.street}" label="Street" field-size="md" readonly="#{address.addressType eq 'POSTAL'}"/>
@@ -159,6 +171,8 @@
                     </b:panelGrid>
                     <b:panelGrid colSpans="12" size="md" style-class="ui-fluid">
                         <p:fieldset legend="User Information">
+                            <b:inputText label="System User Role" value="#{profileBean.systemUser.systemUserType.toString()}" readonly="true"/>
+                            <b:inputText label="Status" value="#{profileBean.systemUser.systemUserStatus.toString()}" readonly="true"/>
                             <b:inputText label="Username" value="#{profileBean.systemUser.username}" readonly="true"/>
                             <b:inputText label="Password" value="#{profileBean.systemUser.password}"/>
                             <b:inputText label="Confirm Password" value="#{profileBean.systemUser.confirmPassword}"/>

@@ -28,21 +28,26 @@ import za.gov.sars.sms.common.EmployeeType;
 @Audited
 @Entity
 @Table(name = "employee")
-public class Employee extends Person{
-    @Column(name = "employee_id")
+public class Employee extends Person {
+
+    @Column(name = "employee_id",unique = true)
     private String employeeId;
     @Column(name = "sace_reg_no")
     private String saceReg;
-    @ManyToMany(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
-    @JoinTable(name = "employee_grade", joinColumns = {@JoinColumn(name = "employee_id")}, inverseJoinColumns = {@JoinColumn(name = "grade_id")})
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @JoinTable(name = "employee_grade", joinColumns = {
+        @JoinColumn(name = "employee_id")}, inverseJoinColumns = {
+        @JoinColumn(name = "grade_id")})
     private List<Grade> grades = new ArrayList<>();
-    @ManyToMany(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
-    @JoinTable(name = "employee_subject", joinColumns = {@JoinColumn(name = "employee_id")}, inverseJoinColumns = {@JoinColumn(name = "subject_id")})
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @JoinTable(name = "employee_subject", joinColumns = {
+        @JoinColumn(name = "employee_id")}, inverseJoinColumns = {
+        @JoinColumn(name = "subject_id")})
     private List<Subject> subjects = new ArrayList<>();
     @Enumerated(EnumType.STRING)
     @Column(name = "employee_type")
     private EmployeeType employeeType;
-    @ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private School school;
 
     public String getEmployeeId() {
@@ -92,5 +97,5 @@ public class Employee extends Person{
     public void setSchool(School school) {
         this.school = school;
     }
-    
+
 }

@@ -14,6 +14,9 @@ import za.gov.sars.sms.domain.Address;
 import za.gov.sars.sms.domain.ContactDetail;
 import za.gov.sars.sms.domain.Employee;
 import za.gov.sars.sms.persistence.EmployeeRepository;
+import za.gov.sars.sms.persistence.GradeRepository;
+import za.gov.sars.sms.persistence.SchoolRepository;
+import za.gov.sars.sms.persistence.SubjectRepository;
 
 /**
  *
@@ -21,7 +24,7 @@ import za.gov.sars.sms.persistence.EmployeeRepository;
  */
 public class EmployeeHelper {
     
-    public static void addEmployee(EmployeeRepository employeeRepository){
+    public static void addEmployee(EmployeeRepository employeeRepository, GradeRepository gradeRepository, SubjectRepository subjectRepository, SchoolRepository schoolRepository){
         Employee employee1 = new Employee();
         employee1.setCreatedBy("test");
         employee1.setCreatedDate(new Date());
@@ -33,6 +36,9 @@ public class EmployeeHelper {
         employee1.setEmployee_id("00010");
         employee1.setSaceReg("1010");
         employee1.setGender(Gender.MALE);
+        employee1.setSchool(schoolRepository.findAll().get(schoolRepository.findAll().size() - 1));
+        employee1.setGrades(gradeRepository.findAll());
+        employee1.setSubjects(subjectRepository.findAll());
         
         Address ressAddress1 = new Address();
         ressAddress1.setAddressType(AddressType.RESIDENTIAL);
@@ -77,6 +83,9 @@ public class EmployeeHelper {
         employee2.setEmployee_id("00011");
         employee2.setSaceReg("1011");
         employee2.setGender(Gender.FEMALE);
+        employee2.setSchool(schoolRepository.findAll().get(schoolRepository.findAll().size() - 1));
+        employee2.setGrades(gradeRepository.findAll());
+        employee2.setSubjects(subjectRepository.findAll());
         
         Address ressAddress2 = new Address();
         ressAddress2.setAddressType(AddressType.RESIDENTIAL);
@@ -122,6 +131,9 @@ public class EmployeeHelper {
         employee3.setEmployee_id("00012");
         employee3.setSaceReg("1012");
         employee3.setGender(Gender.MALE);
+        employee3.setSchool(schoolRepository.findAll().get(schoolRepository.findAll().size() - 1));
+        employee3.setGrades(gradeRepository.findAll());
+        employee3.setSubjects(subjectRepository.findAll());
         
         Address ressAddress3 = new Address();
         ressAddress3.setAddressType(AddressType.RESIDENTIAL);
@@ -167,6 +179,7 @@ public class EmployeeHelper {
         employee4.setEmployee_id("00013");
         employee4.setSaceReg("1013");
         employee4.setGender(Gender.FEMALE);
+        employee4.setSchool(schoolRepository.findAll().get(schoolRepository.findAll().size() - 1));
         
         Address ressAddress4 = new Address();
         ressAddress4.setAddressType(AddressType.RESIDENTIAL);
@@ -211,6 +224,7 @@ public class EmployeeHelper {
         employee5.setEmployee_id("00015");
         employee5.setSaceReg("1015");
         employee5.setGender(Gender.MALE);
+        employee5.setSchool(schoolRepository.findAll().get(schoolRepository.findAll().size() - 1));
         
         Address ressAddress5 = new Address();
         ressAddress5.setAddressType(AddressType.RESIDENTIAL);
@@ -255,6 +269,7 @@ public class EmployeeHelper {
         employee6.setEmployee_id("00016");
         employee6.setSaceReg("1016");
         employee6.setGender(Gender.MALE);
+        employee6.setSchool(schoolRepository.findAll().get(schoolRepository.findAll().size() - 1));
         
         Address ressAddress6 = new Address();
         ressAddress6.setAddressType(AddressType.RESIDENTIAL);
@@ -299,6 +314,7 @@ public class EmployeeHelper {
         employee7.setEmployee_id("00017");
         employee7.setSaceReg("1017");
         employee7.setGender(Gender.MALE);
+        employee7.setSchool(schoolRepository.findAll().get(schoolRepository.findAll().size() - 1));
         
         Address ressAddress7 = new Address();
         ressAddress7.setAddressType(AddressType.RESIDENTIAL);

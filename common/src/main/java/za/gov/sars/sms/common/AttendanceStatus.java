@@ -11,6 +11,7 @@ package za.gov.sars.sms.common;
  */
 public enum AttendanceStatus {
     AVAILABLE("Available"),
+    SESSIONED("IN SESSION"),
     CANCELLED("Cancelled"),
     POSTPONED("Postponed");
     

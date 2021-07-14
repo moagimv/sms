@@ -31,7 +31,7 @@ public class SchoolSystemUser extends Person{
     private String password;
     @Column(name = "confirm_password")
     private String confirmPassword;
-    @Column(name = "identifier")
+    @Column(name = "identifier", unique = true)
     private String identifier;
     @Column(name = "change_password")
     private boolean changePassword;

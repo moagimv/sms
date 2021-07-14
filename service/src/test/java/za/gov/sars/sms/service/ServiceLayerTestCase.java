@@ -90,22 +90,22 @@ public class ServiceLayerTestCase {
     
     @Test
     public void TestB() {
-        GradeHelper.addGrade(gradeRepository);
+        GradeHelper.addGrade(gradeRepository, schoolRepository);
     }
     
     @Test
     public void TestC() {
-        SubjectHelper.addSubject(subjectRepository);
+        SubjectHelper.addSubject(subjectRepository, schoolRepository);
     }
     
     @Test
     public void TestD() {
-        EmployeeHelper.addEmployee(employeeRepository);
+        EmployeeHelper.addEmployee(employeeRepository,gradeRepository,subjectRepository,schoolRepository);
     }
     
     @Test
     public void TestE() {
-        StudentHelper.addStudent(studentRepository);
+        StudentHelper.addStudent(studentRepository,gradeRepository,subjectRepository,schoolRepository);
     }
     
     @Test
@@ -115,17 +115,17 @@ public class ServiceLayerTestCase {
     
     @Test
     public void TestG() {
-        FacilityHelper.addFacility(facilityRepository);
+        FacilityHelper.addFacility(facilityRepository, schoolRepository);
     }
     
     @Test
     public void TestH() {
-        AttendenceHelper.addAttendence(attendenceRepository);
+        AttendenceHelper.addAttendence(attendenceRepository, studentRepository, employeeRepository, gradeRepository, subjectRepository);
     }
     
     @Test
     public void TestI() {
-        AssessmentHelper.addAssessment(assessmentRepository);
+        AssessmentHelper.addAssessment(assessmentRepository, employeeRepository, studentRepository);
     }
     
     

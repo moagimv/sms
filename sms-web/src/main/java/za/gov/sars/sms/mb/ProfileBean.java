@@ -63,7 +63,7 @@ public class ProfileBean extends BaseBean {
     }
 
     public void cancel() {
-        defaultRouter("/secured/landing");
+        redirecting("/secured/landing");
     }
 
     public Employee getStaff() {

@@ -17,6 +17,7 @@ import za.gov.sars.sms.domain.Assessment;
 import za.gov.sars.sms.domain.Employee;
 import za.gov.sars.sms.domain.Grade;
 import za.gov.sars.sms.domain.Student;
+import za.gov.sars.sms.domain.Subject;
 import za.gov.sars.sms.service.AssessmentServiceLocal;
 import za.gov.sars.sms.service.EmployeeServiceLocal;
 import za.gov.sars.sms.service.StudentServiceLocal;
@@ -75,6 +76,9 @@ public class AssessmentBean extends BaseBean {
         }
     }
 
+    public void addAssessment(Assessment assess) {
+        
+    }
     public void save(Assessment assess) {
         if (assess.getId() != null) {
             assess.setUpdatedBy(getActiveUser().getIdentifier());
@@ -134,7 +138,11 @@ public class AssessmentBean extends BaseBean {
     public void gradeSelectionListener() {
         for(Student stud: studentService.listAll()){
             if(stud.getGrade().equals(assessment.getGrade())){
-                students.add(stud);
+                for(Subject subject:stud.getSubjectsList()){
+                    if(subject.equals(assessment.getSubject())){
+                        students.add(stud);
+                    }
+                }                
             }
         }
         setVisible(true);

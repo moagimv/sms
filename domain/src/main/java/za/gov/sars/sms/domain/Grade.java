@@ -27,7 +27,7 @@ import org.hibernate.envers.Audited;
 public class Grade extends BaseEntity{
     @Column(name = "designation")
     private String designation;
-    @ManyToMany(mappedBy = "grades",cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "grades",cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private List<Employee> educators = new ArrayList<>();
     @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private List<Student> students = new ArrayList<>();

@@ -14,6 +14,10 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -30,7 +34,6 @@ import za.gov.sars.sms.common.AttendanceStatus;
 @Entity
 @Table(name = "attendance")
 public class Attendence extends BaseEntity {
-
     @Column(name = "name")
     private String name;
     @Column(name = "description")
@@ -41,15 +44,18 @@ public class Attendence extends BaseEntity {
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private AttendanceStatus status;
-    @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @JoinTable(name = "attendance_student", joinColumns = {
+        @JoinColumn(name = "attendance_id")}, inverseJoinColumns = {
+        @JoinColumn(name = "student_id")})
     private List<Student> students = new ArrayList<>();
-    @OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private Grade grade;
-    @OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private Subject subject;
-    @OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private Facility facility;
-    @OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private Employee educator;
 
     public String getName() {

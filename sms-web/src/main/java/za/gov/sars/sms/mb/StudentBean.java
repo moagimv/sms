@@ -78,8 +78,7 @@ public class StudentBean extends BaseBean{
             student.setCreatedBy(getActiveUser().getIdentifier());
             student.setCreatedDate(new Date());
             student.setPersonType(PersonType.LEARNER);
-            student.setSchool(school);            
-            student.setPersonType(PersonType.LEARNER);
+            student.setSchool(school);
             
             Address physicalAddress = new Address();
             physicalAddress.setAddressType(AddressType.RESIDENTIAL);
