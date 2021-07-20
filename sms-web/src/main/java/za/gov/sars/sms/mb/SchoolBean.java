@@ -47,14 +47,14 @@ public class SchoolBean extends BaseBean{
     private GradeServiceLocal gradeService;
     @Autowired
     private FacilityServiceLocal facilityService;
-    
-    private School school;
-    
+        
     List<Employee> employees = new ArrayList<>();
     List<Student> students = new ArrayList<>();
     List<Subject> subjects = new ArrayList<>();
     List<Grade> grades = new ArrayList<>();
     List<Facility> facilities = new ArrayList<>();
+    
+    private School school;
     
     @PostConstruct
     public void init(){

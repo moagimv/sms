@@ -27,7 +27,7 @@ public class AssessmentHelper {
         assessment1.setFullMark(100.00D);
         assessment1.setPassMark(50.00D);
         assessment1.setDueDate(new Date());
-        assessment1.setEducator(employeeRepository.findAll().get(employeeRepository.findAll().size() - 5));
+        assessment1.setEducator(employeeRepository.findAll().get(employeeRepository.findAll().size() - employeeRepository.findAll().size()));
         assessment1.setStudent(studentRepository.findAll().get(studentRepository.findAll().size() - 3));
         assessmentRepository.save(assessment1);
         
@@ -39,7 +39,7 @@ public class AssessmentHelper {
         assessment2.setFullMark(50.00D);
         assessment2.setPassMark(20.00D);
         assessment2.setDueDate(new Date());
-        assessment2.setEducator(employeeRepository.findAll().get(employeeRepository.findAll().size() - 5));
+        assessment2.setEducator(employeeRepository.findAll().get(employeeRepository.findAll().size() - 7));
         assessment2.setStudent(studentRepository.findAll().get(studentRepository.findAll().size() - 4));
         assessmentRepository.save(assessment2);
         

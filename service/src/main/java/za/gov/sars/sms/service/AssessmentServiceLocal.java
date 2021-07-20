@@ -13,6 +13,11 @@ import za.gov.sars.sms.domain.Assessment;
  * @author S2026987
  */
 public interface AssessmentServiceLocal {
+    
+    List<Assessment> findAssessmentByStudentNo(String studentNo);
+    
+    List<Assessment> findAssessmentByEmployeeId(String employeeId);
+    
     Assessment save(Assessment assessment);
 
     Assessment findById(Long id);

@@ -14,7 +14,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import org.springframework.beans.factory.annotation.Autowired;
 import za.gov.sars.sms.domain.Grade;
+import za.gov.sars.sms.domain.School;
 import za.gov.sars.sms.service.GradeServiceLocal;
+import za.gov.sars.sms.service.SchoolServiceLocal;
 
 /**
  *
@@ -25,15 +27,19 @@ import za.gov.sars.sms.service.GradeServiceLocal;
 public class GradeBean extends BaseBean{
     @Autowired
     private GradeServiceLocal gradeService;
+    @Autowired
+    private SchoolServiceLocal schoolService;
     
     private List<Grade> grades = new ArrayList<>();
     
     private Grade grade;
+    private School school;
     
     @PostConstruct
     public void init(){
         this.resetView(false).setList(true);
         grades = gradeService.listAll();
+        school = schoolService.listAll().get(schoolService.listAll().size() - 1);
     }
     
     public void addOrUpdate(Grade grd) {
@@ -47,6 +53,7 @@ public class GradeBean extends BaseBean{
             grade = new Grade();
             grade.setCreatedBy(getActiveUser().getIdentifier());
             grade.setCreatedDate(new Date());
+            grade.setSchool(school);
             
             grades.add(0, grade);
         }
@@ -99,6 +106,14 @@ public class GradeBean extends BaseBean{
 
     public void setGrade(Grade grade) {
         this.grade = grade;
+    }
+
+    public School getSchool() {
+        return school;
+    }
+
+    public void setSchool(School school) {
+        this.school = school;
     }
     
 }

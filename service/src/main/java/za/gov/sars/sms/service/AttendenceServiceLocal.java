@@ -13,6 +13,13 @@ import za.gov.sars.sms.domain.Attendence;
  * @author S2026987
  */
 public interface AttendenceServiceLocal {
+    
+    List<Attendence> findAttendenceByGradeDesignation(String designation);
+    
+    List<Attendence> findAttendenceBySubjectName(String name);
+    
+    List<Attendence> findAttendenceByEducatorEmployeeId(String employeeId);
+    
     Attendence save(Attendence attendence);
 
     Attendence findById(Long id);

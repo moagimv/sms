@@ -359,17 +359,14 @@
                         </b:panelGrid>
                     </p:dataGrid>
                     <b:panelGrid colSpans="12" size="md" style-class="ui-fluid">
-                        <p:fieldset legend="School Details">
-                            <p:dataTable value="#{landingBean.student.subjects}" paginator="true" paginatorPosition="top" paginatorAlwaysVisible="false" rows="10" var="subject" reflow="true">
+                        <p:fieldset legend="Subjects Details">
+                            <p:dataTable value="#{landingBean.student.subjectsList}" paginator="true" paginatorPosition="top" paginatorAlwaysVisible="false" rows="10" var="subject" reflow="true">
                                 <p:column headerText="Subject Name">
                                     <h:outputText value="#{subject.name}"/>
                                 </p:column>
                                 <p:column headerText="Subject Code">
                                     <h:outputText value="#{subject.code}"/>
-                                </p:column>
-                                <p:column headerText="Educator's Full Names">
-                                    <h:outputText value="#{subject.educator.firstName} #{subject.educator.lastName}"/>
-                                </p:column>                       
+                                </p:column>                      
                             </p:dataTable>
                         </p:fieldset>
                     </b:panelGrid>

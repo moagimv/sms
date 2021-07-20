@@ -59,7 +59,6 @@ public class SystemUserBean extends BaseBean {
     private List<SystemUserStatus> systemUserStatuses;
 
     private School school;
-
     private SchoolSystemUser systemUser;
     private Employee staff;
     private Student student;
@@ -92,7 +91,7 @@ public class SystemUserBean extends BaseBean {
             systemUser = user;
         } else {
             systemUser = new SchoolSystemUser();
-            systemUser.setCreatedBy("");
+            systemUser.setCreatedBy(getActiveUser().getIdentifier());
             systemUser.setCreatedDate(new Date());
             systemUser.setSchool(school);
             systemUser.setPersonType(PersonType.SYS_USER);
@@ -108,7 +107,7 @@ public class SystemUserBean extends BaseBean {
                 user.setUpdatedDate(new Date());
                 systemUserService.update(user);
             } else {
-                if (userExist(user)) {
+                if (!userExist(user)) {
                     if (user.getSystemUserType().equals(SystemUserType.EMPLOYEE) || user.getSystemUserType().equals(SystemUserType.SYSTEM_ADMIN)) {
                         staff = employeeService.findEmployeeByEmployeeId(user.getIdentifier());
                         user.setFirstName(staff.getFirstName());
@@ -180,6 +179,7 @@ public class SystemUserBean extends BaseBean {
 
     public void delete(SchoolSystemUser user) {
         systemUserService.deleteById(user.getId());
+        synchronize(user);
         this.resetView(false).setList(true);
     }
 
@@ -197,7 +197,7 @@ public class SystemUserBean extends BaseBean {
             if (systemUsers.contains(user)) {
                 systemUsers.remove(user);
             }
-        }
+        }        
         this.resetView(false).setList(true);
     }
 

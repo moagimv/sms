@@ -55,8 +55,7 @@ public class EmployeeBean extends BaseBean {
     private List<Gender> genders;
     private List<PersonType> personTypes;
     
-    private Employee staff;
-    
+    private Employee staff;    
     private School school;
 
     @PostConstruct

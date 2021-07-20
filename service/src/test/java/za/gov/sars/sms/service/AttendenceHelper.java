@@ -29,7 +29,7 @@ public class AttendenceHelper {
         attendence1.setStatus(AttendanceStatus.AVAILABLE);
         attendence1.setAttendanceDate(new Date());
         //attendence1.setStudents(studentRepository.findAll());
-        attendence1.setEducator(employeeRepository.findAll().get(employeeRepository.findAll().size() - 3));
+        attendence1.setEducator(employeeRepository.findAll().get(employeeRepository.findAll().size() - 7));
         //attendence1.setGrade(gradeRepository.findAll().get(gradeRepository.findAll().size() - 1));
         //attendence1.setSubject(subjectRepository.findAll().get(subjectRepository.findAll().size() - 1));
         attendenceRepository.save(attendence1);
@@ -42,7 +42,7 @@ public class AttendenceHelper {
         attendence2.setStatus(AttendanceStatus.CANCELLED);
         attendence2.setAttendanceDate(new Date());
         //attendence2.setStudents(studentRepository.findAll());
-        attendence2.setEducator(employeeRepository.findAll().get(employeeRepository.findAll().size() - 4));
+        attendence2.setEducator(employeeRepository.findAll().get(employeeRepository.findAll().size() - 7));
         //attendence2.setGrade(gradeRepository.findAll().get(gradeRepository.findAll().size() - 2));
         //attendence2.setSubject(subjectRepository.findAll().get(subjectRepository.findAll().size() - 2));
         attendenceRepository.save(attendence2);
@@ -55,23 +55,23 @@ public class AttendenceHelper {
         attendence3.setStatus(AttendanceStatus.POSTPONED);
         attendence3.setAttendanceDate(new Date());
         //attendence3.setStudents(studentRepository.findAll());
-        attendence3.setEducator(employeeRepository.findAll().get(employeeRepository.findAll().size() - 5));
+        attendence3.setEducator(employeeRepository.findAll().get(employeeRepository.findAll().size() - 7));
         //attendence3.setGrade(gradeRepository.findAll().get(gradeRepository.findAll().size() - 3));
         //attendence3.setSubject(subjectRepository.findAll().get(subjectRepository.findAll().size() - 3));
         attendenceRepository.save(attendence3);
         
         Attendence attendence4 = new Attendence();
-        attendence3.setCreatedBy("test");
-        attendence3.setCreatedDate(new Date());
-        attendence3.setName("English Chapter 1 Lecture");
-        attendence3.setDescription("An English Chapter 1 test cases attendence");
-        attendence3.setStatus(AttendanceStatus.SESSIONED);
-        attendence3.setAttendanceDate(new Date());
+        attendence4.setCreatedBy("test");
+        attendence4.setCreatedDate(new Date());
+        attendence4.setName("English Chapter 1 Lecture");
+        attendence4.setDescription("An English Chapter 1 test cases attendence");
+        attendence4.setStatus(AttendanceStatus.SESSIONED);
+        attendence4.setAttendanceDate(new Date());
         //attendence4.setStudents(studentRepository.findAll());
-        attendence4.setEducator(employeeRepository.findAll().get(employeeRepository.findAll().size() - 5));
+        attendence4.setEducator(employeeRepository.findAll().get(employeeRepository.findAll().size() - 7));
         //attendence4.setGrade(gradeRepository.findAll().get(gradeRepository.findAll().size() - 3));
         //attendence4.setSubject(subjectRepository.findAll().get(subjectRepository.findAll().size() - 4));
-        attendenceRepository.save(attendence3);
+        attendenceRepository.save(attendence4);
         
     }
 }

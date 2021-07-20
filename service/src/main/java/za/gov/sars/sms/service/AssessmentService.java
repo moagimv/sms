@@ -67,5 +67,15 @@ public class AssessmentService implements AssessmentServiceLocal{
     public long count() {
         return assessmentRepository.count();
     }
+
+    @Override
+    public List<Assessment> findAssessmentByStudentNo(String studentNo) {
+        return assessmentRepository.findAssessmentByStudentNo(studentNo);
+    }
+
+    @Override
+    public List<Assessment> findAssessmentByEmployeeId(String employeeId) {
+        return assessmentRepository.findAssessmentByEmployeeId(employeeId);
+    }
     
 }

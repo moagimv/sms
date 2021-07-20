@@ -32,9 +32,9 @@ public class LandingBean extends BaseBean {
     @Autowired
     private StudentServiceLocal studentService;
 
-    Employee staff;
-    Student student;
-    School school;
+    private Employee staff;
+    private Student student;
+    private School school;
 
     @PostConstruct
     public void init() {

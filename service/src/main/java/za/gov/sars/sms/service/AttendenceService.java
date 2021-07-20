@@ -66,5 +66,20 @@ public class AttendenceService implements AttendenceServiceLocal{
     public long count() {
         return attendenceRepository.count();
     }
+
+    @Override
+    public List<Attendence> findAttendenceByGradeDesignation(String designation) {
+        return attendenceRepository.findAttendenceByGradeDesignation(designation);
+    }
+
+    @Override
+    public List<Attendence> findAttendenceBySubjectName(String name) {
+        return attendenceRepository.findAttendenceBySubjectName(name);
+    }
+
+    @Override
+    public List<Attendence> findAttendenceByEducatorEmployeeId(String employeeId) {
+        return attendenceRepository.findAttendenceByEducatorEmployeeId(employeeId);
+    }
     
 }

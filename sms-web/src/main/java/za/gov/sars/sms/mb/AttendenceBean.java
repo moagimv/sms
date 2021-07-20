@@ -41,47 +41,34 @@ public class AttendenceBean extends BaseBean {
     @Autowired
     private StudentServiceLocal studentService;
 
+    private List<Attendence> attendences = new ArrayList<>();
+    private List<Attendence> allAttendences = new ArrayList<>();
+    private List<Facility> Facilities = new ArrayList<>();
+    private List<AttendanceStatus> attendanceStatuses = new ArrayList<>();
+            
     private Attendence attendence;
     private Employee educator;
     private Student student;
 
-    private List<Facility> Facilities = new ArrayList<>();
-    private List<AttendanceStatus> attendanceStatuses = new ArrayList<>();
-    private List<Attendence> attendences = new ArrayList<>();
-    private List<Attendence> studAttendences = new ArrayList<>();
-
     @PostConstruct
     public void init() {
         this.resetView(false).setList(true);
+        allAttendences = attendenceService.listAll();
         if (getActiveUser().isLearner()) {
             student = studentService.findStudentByStudentNo(getActiveUser().getIdentifier());
         } else {
             educator = employeeService.findEmployeeByEmployeeId(getActiveUser().getIdentifier());
-        }
-        
+        }        
         if (educator != null) {
-            attendences = getEmpAttendenceList();
+            attendences = attendenceService.findAttendenceByEducatorEmployeeId(educator.getEmployeeId());
         }
         if (student != null) {
-            studAttendences = getStudentAttendenceList();
-        }
-        
+            attendences = attendenceService.findAttendenceByGradeDesignation(student.getGrade().getDesignation());
+        }        
         Facilities = facilityService.listAll();
-        attendanceStatuses = Arrays.asList(AttendanceStatus.values());
-        
+        attendanceStatuses = Arrays.asList(AttendanceStatus.values());        
     }
 
-    public List<Attendence> getEmpAttendenceList() {
-        List<Attendence> empAttend = new ArrayList<>();
-
-        return empAttend;
-    }
-
-    public List<Attendence> getStudentAttendenceList() {
-        List<Attendence> studAttend = new ArrayList<>();
-
-        return studAttend;
-    }
 
     public void addOrUpdate(Attendence attend) {
         this.resetView(false).setAdd(true);
@@ -190,12 +177,12 @@ public class AttendenceBean extends BaseBean {
         this.student = student;
     }
 
-    public List<Attendence> getStudAttendences() {
-        return studAttendences;
+    public List<Attendence> getAllAttendences() {
+        return allAttendences;
     }
 
-    public void setStudAttendences(List<Attendence> studAttendences) {
-        this.studAttendences = studAttendences;
+    public void setAllAttendences(List<Attendence> allAttendences) {
+        this.allAttendences = allAttendences;
     }
 
 }

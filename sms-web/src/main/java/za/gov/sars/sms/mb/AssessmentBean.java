@@ -38,6 +38,7 @@ public class AssessmentBean extends BaseBean {
     private StudentServiceLocal studentService;
 
     private List<Assessment> assessments = new ArrayList<>();
+    private List<Assessment> allAssessments = new ArrayList<>();
     private List<Student> students = new ArrayList<>();
 
     private Assessment assessment;
@@ -46,17 +47,17 @@ public class AssessmentBean extends BaseBean {
 
     @PostConstruct
     public void init() {
-        this.resetView(false).setList(true);
+        this.resetView(false).setList(true);        
+        allAssessments = assessmentService.listAll();        
         if (getActiveUser().isLearner()) {
             student = studentService.findStudentByStudentNo(getActiveUser().getIdentifier());
         } else {
             educator = employeeService.findEmployeeByEmployeeId(getActiveUser().getIdentifier());
         }
-
         if (educator != null) {
-            assessments = retrieveEmpAssessments();
+            assessments = assessmentService.findAssessmentByEmployeeId(educator.getEmployeeId());
         } else if (student != null) {
-            assessments = retrieveStudentAssessments();
+            assessments = assessmentService.findAssessmentByStudentNo(student.getStudentNo());
         }
     }
 
@@ -114,27 +115,6 @@ public class AssessmentBean extends BaseBean {
         this.resetView(false).setList(true);
     }
     
-    
-    public List<Assessment> retrieveEmpAssessments() {
-        List<Assessment> assesses = new ArrayList<>();
-        for (Assessment assess : assessmentService.listAll()) {
-            if (assess.getEducator() != null && assess.getEducator().equals(educator)) {
-                assesses.add(assess);
-            }
-        }
-        return assesses;
-    }
-
-    public List<Assessment> retrieveStudentAssessments() {
-        List<Assessment> assesses = new ArrayList<>();
-        for (Assessment assess : assessmentService.listAll()) {
-            if (assess.getStudent()!= null && assess.getStudent().equals(student)) {
-                assesses.add(assess);
-            }
-        }
-        return assesses;
-    }
-    
     public void gradeSelectionListener() {
         for(Student stud: studentService.listAll()){
             if(stud.getGrade().equals(assessment.getGrade())){
@@ -186,6 +166,14 @@ public class AssessmentBean extends BaseBean {
 
     public void setStudents(List<Student> students) {
         this.students = students;
+    }
+
+    public List<Assessment> getAllAssessments() {
+        return allAssessments;
+    }
+
+    public void setAllAssessments(List<Assessment> allAssessments) {
+        this.allAssessments = allAssessments;
     }
 
 }

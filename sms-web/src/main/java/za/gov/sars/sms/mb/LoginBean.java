@@ -91,7 +91,7 @@ public class LoginBean extends BaseBean {
         if (user == null) {
             return false;
         }
-
+        
         Employee emp = employeeService.findEmployeeByEmployeeId(user.getIdentifier());
 
         if (user.getPersonType().equals(PersonType.SYS_USER)) {

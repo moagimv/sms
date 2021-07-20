@@ -5,7 +5,10 @@
  */
 package za.gov.sars.sms.persistence;
 
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import za.gov.sars.sms.domain.Assessment;
 
@@ -15,5 +18,11 @@ import za.gov.sars.sms.domain.Assessment;
  */
 @Repository
 public interface AssessmentRepository extends JpaRepository<Assessment, Long>{
+    
+    @Query("SELECT e FROM Assessment e WHERE e.student.studentNo =:studentNo")
+    public List<Assessment> findAssessmentByStudentNo(@Param("studentNo") String studentNo);
+    
+    @Query("SELECT e FROM Assessment e WHERE e.educator.employeeId =:employeeId")
+    public List<Assessment> findAssessmentByEmployeeId(@Param("employeeId") String employeeId);
     
 }
